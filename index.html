@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSupport | IT Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2 class="logo">Tech<span>Support.</span></h2>
+
+        <nav>
+            <a href="#dashboard" class="active">Dashboard</a>
+            <a href="#tickets">All Tickets</a>
+            <a href="#create">Create Ticket</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>IT SUPPORT SYSTEM</p>
+            <small>Version 1.0</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">MANAGEMENT SYSTEM</p>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">A</div>
+                <span>Administrator</span>
+            </div>
+        </header>
+
+        <section id="dashboard">
+            <div class="welcome">
+                <div>
+                    <p class="eyebrow">WELCOME BACK</p>
+                    <h2>Support Overview</h2>
+                    <p>Manage and monitor your support requests.</p>
+                </div>
+                <button class="primary-btn" onclick="showCreateForm()">
+                    + New Ticket
+                </button>
+            </div>
+
+            <div class="stats">
+                <article class="stat-card">
+                    <p>Total Tickets</p>
+                    <h2 id="totalTickets">0</h2>
+                    <span>All requests</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Pending</p>
+                    <h2 id="pendingTickets">0</h2>
+                    <span>Awaiting attention</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>In Progress</p>
+                    <h2 id="progressTickets">0</h2>
+                    <span>Being handled</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Resolved</p>
+                    <h2 id="resolvedTickets">0</h2>
+                    <span>Completed requests</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="create" class="panel hidden">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SUPPORT REQUEST</p>
+                    <h2>Create New Ticket</h2>
+                </div>
+                <button class="close-btn" onclick="hideCreateForm()">✕</button>
+            </div>
+
+            <form id="ticketForm">
+                <label for="title">Ticket Title</label>
+                <input id="title" type="text" placeholder="Example: Computer not working" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Describe the problem..." required></textarea>
+
+                <div class="form-row">
+                    <div>
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option>Hardware</option>
+                            <option>Software</option>
+                            <option>Network</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="priority">Priority</label>
+                        <select id="priority">
+                            <option>Low</option>
+                            <option selected>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">Submit Ticket</button>
+            </form>
+        </section>
+
+        <section id="tickets" class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">REQUEST MANAGEMENT</p>
+                    <h2>Recent Tickets</h2>
+                </div>
+            </div>
+
+            <div class="filters">
+                <input id="searchInput" type="search" placeholder="Search tickets...">
+
+                <select id="statusFilter">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticket</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketList"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No tickets found. Create your first support ticket.
+            </p>
+        </section>
+
+        <footer>
+            <p>© 2026 TechSupport. IT Support Management System.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
